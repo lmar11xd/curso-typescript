@@ -13,6 +13,13 @@ export class Movie implements IVideo<string> {
     return this.duration;
   }
 
+  getHoursMinutes(): string {
+    const mins = this.duration % 60;
+    const hours = (this.duration - mins) / 60;
+
+    return `${hours}h ${mins}m`;
+  }
+
   getInfo() {
     return `Title: ${this.title} - Duration: ${this.duration} - Has Oscars: ${this.hasOscars}`
   }

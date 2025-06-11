@@ -49,3 +49,37 @@ Agregar fichero webpack.config.js, luego quitar los .js en los imports
 ```
 npm i webpack-dev-server -D
 ```
+
+Modificar package.json -> "scripts"
+```
+"serve": "webpack-dev-server",
+"build": "webpack"
+```
+
+# Test
+Instalar las siguientes dependencias:
+```
+npm i jest babel-jest @babel/core @babel/preset-env @babel/preset-typescript @types/jest -D
+```
+Modificar package.json
+```
+"scripts": {
+  ...,
+  "test": "jest"
+},
+"jest": {
+  "transform": {
+    "^.+\\.[t|j]sx?$": "babel-jest"
+  }
+}
+```
+
+Agregar archivo babel.config.js
+```
+module.exports = {
+  presets: [
+    ["@babel/preset-env", { targets: { node: "current" } }],
+    "@babel/preset-typescript",
+  ],
+};
+```
