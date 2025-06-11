@@ -88,6 +88,8 @@ module.exports = {
 ````
 npm install -g typescript
 
+tsc --init
+
 tsconfig.json:
   "module": "ESNext",
   "rootDir": "./src",
