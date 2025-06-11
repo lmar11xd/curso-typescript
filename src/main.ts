@@ -5,6 +5,7 @@
 import { HorrorMovie } from './classes/HorrorMovie';
 import { Movie } from './classes/Movie';
 import { Director } from './models/Director';
+import { User } from './models/User';
 
 const director1: Director<string> = {
   name: "Peter Jackson",
@@ -53,4 +54,19 @@ btn.addEventListener("click", () => {
   }
 
   moviesShow = !moviesShow;
+})
+
+const fetchUser = async () => {
+  const API_URL = "https://jsonplaceholder.typicode.com/users/1";
+  const response = await fetch(API_URL);
+  const data = await response.json();
+  return data as User;
+}
+
+const loginBtn = document.querySelector(".login-btn") as HTMLButtonElement;
+const username = document.querySelector(".user") as HTMLParagraphElement;
+
+loginBtn.addEventListener("click", async () => {
+  const user = await fetchUser();
+  username.textContent = user.name;
 })
